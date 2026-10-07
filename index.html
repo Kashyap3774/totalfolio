@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Totalfolio — Your Financial Life, Organised</title>
+  <title>Totalfolio | Keep your financial life in one place</title>
 
   <meta
     name="description"
-    content="Totalfolio helps individuals and families organise investments, insurance, loans, documents and important financial reminders in one private place."
+    content="Totalfolio helps individuals and families keep track of investments, insurance, loans, documents and important financial dates in one place."
   />
 
   <meta name="theme-color" content="#ffffff" />
@@ -16,33 +16,31 @@
   <meta property="og:title" content="Totalfolio" />
   <meta
     property="og:description"
-    content="Your financial life, organised in one private place."
+    content="Keep your financial life in one place."
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://totalfolio.app/" />
 
   <style>
     :root {
-      --ink: #14212b;
-      --ink-2: #34424e;
-      --muted: #66737e;
-      --soft: #f5f7f8;
-      --soft-2: #eef2f3;
-      --line: #dde3e6;
+      --ink: #17211f;
+      --muted: #66706d;
+      --soft: #f6f7f5;
+      --line: #dfe4e0;
       --white: #ffffff;
 
-      --brand: #174b45;
-      --brand-2: #23665d;
-      --brand-soft: #eaf3f1;
+      --green: #184d42;
+      --green-light: #e8f0ed;
+      --green-soft: #f1f5f3;
 
-      --warn: #9f6c22;
-      --warn-soft: #fbf4e8;
-
-      --radius: 16px;
-      --radius-lg: 24px;
-      --shadow: 0 18px 55px rgba(15, 32, 44, 0.08);
+      --amber: #9c6723;
+      --amber-soft: #f8f1e7;
 
       --container: 1160px;
+
+      --shadow:
+        0 2px 5px rgba(20, 40, 34, 0.03),
+        0 20px 50px rgba(20, 40, 34, 0.07);
     }
 
     * {
@@ -57,12 +55,12 @@
 
     body {
       font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
         sans-serif;
 
       color: var(--ink);
@@ -72,12 +70,11 @@
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
-    button,
-    input {
+    button {
       font: inherit;
     }
 
@@ -86,83 +83,21 @@
       margin: 0 auto;
     }
 
-    .section {
-      padding: 96px 0;
-    }
-
-    .section-soft {
-      background: var(--soft);
-    }
-
-    .section-dark {
-      background: #102c29;
-      color: #fff;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      color: var(--brand-2);
-      font-size: 12px;
-      font-weight: 750;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 18px;
-      height: 2px;
-      background: currentColor;
-    }
-
-    .section-title {
-      margin-top: 14px;
-
-      max-width: 760px;
-
-      font-size: clamp(34px, 4.3vw, 50px);
-      line-height: 1.1;
-      letter-spacing: -1.8px;
-      font-weight: 730;
-    }
-
-    .section-copy {
-      margin-top: 18px;
-      max-width: 720px;
-
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.75;
-    }
-
-    .section-dark .eyebrow {
-      color: #93c9c0;
-    }
-
-    .section-dark .section-copy {
-      color: #b9cbc7;
-    }
-
-    /* ------------------------------------------------
-       NAVIGATION
-    ------------------------------------------------ */
+    /* Header */
 
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 999;
+      z-index: 1000;
 
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
 
-      border-bottom: 1px solid rgba(221, 227, 230, 0.9);
+      border-bottom: 1px solid var(--line);
     }
 
-    .navbar {
-      min-height: 72px;
+    .nav {
+      min-height: 70px;
 
       display: flex;
       align-items: center;
@@ -170,32 +105,32 @@
       gap: 30px;
     }
 
-    .logo {
+    .brand {
       display: flex;
       align-items: center;
       gap: 11px;
 
       font-size: 20px;
-      font-weight: 760;
+      font-weight: 750;
       letter-spacing: -0.4px;
     }
 
-    .logo-mark {
-      width: 36px;
-      height: 36px;
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+
+      border-radius: 9px;
 
       display: grid;
       place-items: center;
 
-      border-radius: 10px;
-
-      background: var(--brand);
+      background: var(--green);
       color: white;
     }
 
-    .logo-mark svg {
-      width: 21px;
-      height: 21px;
+    .brand-mark svg {
+      width: 20px;
+      height: 20px;
     }
 
     .nav-links {
@@ -203,52 +138,66 @@
       align-items: center;
       gap: 28px;
 
-      color: var(--muted);
       font-size: 14px;
-      font-weight: 550;
+      color: var(--muted);
     }
 
     .nav-links a:hover {
       color: var(--ink);
     }
 
-    .nav-cta {
+    .nav-button {
       padding: 10px 16px;
-      border-radius: 9px;
 
-      background: var(--brand);
+      border-radius: 8px;
+
+      background: var(--green);
       color: white !important;
 
       font-weight: 650;
     }
 
-    /* ------------------------------------------------
-       HERO
-    ------------------------------------------------ */
+    /* Hero */
 
     .hero {
-      padding: 102px 0 84px;
-      overflow: hidden;
+      padding: 100px 0 84px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.04fr 0.96fr;
+      grid-template-columns: 1.02fr 0.98fr;
       gap: 78px;
       align-items: center;
+    }
+
+    .small-label {
+      display: inline-block;
+
+      margin-bottom: 18px;
+
+      color: var(--green);
+
+      font-size: 12px;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     .hero h1 {
       max-width: 690px;
 
-      font-size: clamp(48px, 6.4vw, 76px);
-      line-height: 1.01;
-      letter-spacing: -3.2px;
-      font-weight: 760;
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(48px, 6vw, 72px);
+      line-height: 1.03;
+
+      font-weight: 500;
+      letter-spacing: -2.7px;
     }
 
-    .hero h1 span {
-      color: var(--brand-2);
+    .hero h1 strong {
+      color: var(--green);
+      font-weight: 500;
     }
 
     .hero-copy {
@@ -257,12 +206,13 @@
       margin-top: 27px;
 
       color: var(--muted);
-      font-size: 19px;
+
+      font-size: 18px;
       line-height: 1.75;
     }
 
     .hero-actions {
-      margin-top: 34px;
+      margin-top: 32px;
 
       display: flex;
       gap: 12px;
@@ -272,267 +222,289 @@
     .button {
       min-height: 46px;
 
+      padding: 0 20px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
 
-      padding: 0 20px;
-
-      border-radius: 9px;
+      border-radius: 8px;
       border: 1px solid transparent;
 
       font-size: 14px;
       font-weight: 650;
 
-      cursor: pointer;
-
-      transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease,
-        border-color 0.18s ease;
+      transition: 0.18s ease;
     }
 
     .button-primary {
-      background: var(--brand);
+      background: var(--green);
       color: white;
     }
 
     .button-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 22px rgba(23, 75, 69, 0.18);
+      box-shadow: 0 8px 20px rgba(24, 77, 66, 0.14);
     }
 
     .button-secondary {
-      background: var(--white);
+      background: white;
       border-color: var(--line);
-      color: var(--ink);
     }
 
     .button-secondary:hover {
-      border-color: #bcc6ca;
+      border-color: #bcc7c2;
     }
 
     .hero-note {
-      margin-top: 20px;
+      margin-top: 18px;
 
-      color: #849098;
-      font-size: 13px;
+      color: #89918e;
+      font-size: 12px;
     }
 
-    /* ------------------------------------------------
-       DASHBOARD PREVIEW
-    ------------------------------------------------ */
+    /* Dashboard preview */
 
-    .app-preview {
+    .dashboard {
       border: 1px solid var(--line);
-      border-radius: 22px;
+      border-radius: 20px;
 
-      background: var(--white);
+      background: white;
+
       box-shadow: var(--shadow);
 
       overflow: hidden;
     }
 
-    .preview-top {
-      min-height: 58px;
+    .dashboard-top {
+      min-height: 56px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       padding: 0 20px;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
       border-bottom: 1px solid var(--line);
     }
 
-    .preview-title {
+    .dashboard-top strong {
       font-size: 13px;
-      font-weight: 650;
     }
 
-    .preview-private {
-      display: flex;
-      align-items: center;
-      gap: 7px;
+    .local-badge {
+      color: var(--green);
 
       font-size: 11px;
       font-weight: 650;
-      color: var(--brand-2);
     }
 
-    .preview-private::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-      background: var(--brand-2);
-    }
-
-    .preview-body {
+    .dashboard-body {
       padding: 20px;
     }
 
-    .overview-box {
+    .main-summary {
       padding: 24px;
 
-      background: var(--brand);
+      border-radius: 13px;
+
+      background: var(--green);
       color: white;
-
-      border-radius: 14px;
     }
 
-    .overview-small {
+    .summary-label {
+      color: #c3d9d4;
+
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.07em;
       text-transform: uppercase;
-
-      color: #b9d7d2;
-    }
-
-    .overview-big {
-      margin-top: 8px;
-
-      font-size: 26px;
+      letter-spacing: 0.08em;
       font-weight: 700;
-      letter-spacing: -0.8px;
     }
 
-    .overview-note {
-      margin-top: 5px;
+    .summary-heading {
+      margin-top: 7px;
 
+      font-size: 24px;
+      font-weight: 650;
+    }
+
+    .summary-copy {
+      margin-top: 4px;
+
+      color: #d6e5e2;
       font-size: 12px;
-      color: #c9dfdb;
     }
 
-    .preview-cards {
-      margin-top: 14px;
+    .dashboard-grid {
+      margin-top: 13px;
 
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: 11px;
     }
 
-    .mini-card {
-      padding: 18px;
+    .dash-card {
+      padding: 17px;
 
-      min-height: 106px;
+      min-height: 98px;
+
+      background: #fafbfa;
 
       border: 1px solid var(--line);
-      border-radius: 12px;
-
-      background: #fbfcfc;
+      border-radius: 11px;
     }
 
-    .mini-label {
+    .dash-label {
+      color: #8b9491;
+
       font-size: 10px;
       font-weight: 750;
-      letter-spacing: 0.07em;
       text-transform: uppercase;
-
-      color: #859099;
+      letter-spacing: 0.07em;
     }
 
-    .mini-value {
-      margin-top: 8px;
+    .dash-value {
+      margin-top: 7px;
 
       font-size: 15px;
-      font-weight: 670;
+      font-weight: 660;
     }
 
-    .mini-note {
-      margin-top: 3px;
+    .dash-note {
+      margin-top: 2px;
 
-      font-size: 12px;
       color: var(--muted);
+      font-size: 11px;
     }
 
-    .due-list {
-      margin-top: 14px;
-
-      padding: 16px 18px;
+    .upcoming {
+      margin-top: 13px;
 
       border: 1px solid var(--line);
-      border-radius: 12px;
+      border-radius: 11px;
+
+      padding: 16px 17px;
     }
 
-    .due-heading {
-      margin-bottom: 11px;
-
+    .upcoming-title {
       display: flex;
       justify-content: space-between;
+
+      margin-bottom: 8px;
 
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 650;
     }
 
-    .due-item {
+    .upcoming-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 15px;
+      gap: 20px;
 
       padding: 9px 0;
 
-      border-top: 1px solid #edf0f2;
+      border-top: 1px solid #edf0ee;
 
       font-size: 12px;
     }
 
-    .due-item:first-of-type {
-      border-top: 0;
+    .upcoming-row:first-of-type {
+      border-top: none;
     }
 
-    .due-date {
-      color: var(--warn);
+    .days {
+      color: var(--amber);
       white-space: nowrap;
     }
 
-    /* ------------------------------------------------
-       TRUST STRIP
-    ------------------------------------------------ */
+    /* General sections */
 
-    .trust-strip {
+    .section {
+      padding: 94px 0;
+    }
+
+    .section-soft {
+      background: var(--soft);
+    }
+
+    .section-dark {
+      background: #102d28;
+      color: white;
+    }
+
+    .section-title {
+      max-width: 760px;
+
+      margin-top: 12px;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(34px, 4vw, 48px);
+      line-height: 1.13;
+
+      font-weight: 500;
+      letter-spacing: -1.5px;
+    }
+
+    .section-copy {
+      max-width: 720px;
+
+      margin-top: 18px;
+
+      color: var(--muted);
+
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .section-dark .section-copy {
+      color: #b8cbc6;
+    }
+
+    .section-dark .small-label {
+      color: #91c4b9;
+    }
+
+    /* Quick reasons */
+
+    .reasons {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
 
-      background: #fafbfb;
+      background: #fbfcfb;
     }
 
-    .trust-grid {
+    .reason-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
     }
 
-    .trust-item {
-      padding: 24px;
+    .reason {
+      padding: 25px;
 
       border-right: 1px solid var(--line);
     }
 
-    .trust-item:last-child {
+    .reason:last-child {
       border-right: 0;
     }
 
-    .trust-title {
+    .reason strong {
+      display: block;
+
+      margin-bottom: 4px;
+
       font-size: 14px;
-      font-weight: 670;
     }
 
-    .trust-copy {
-      margin-top: 4px;
-
+    .reason span {
       color: var(--muted);
       font-size: 12px;
     }
 
-    /* ------------------------------------------------
-       PAIN POINTS
-    ------------------------------------------------ */
+    /* Problems */
 
-    .pain-grid {
+    .problem-grid {
       margin-top: 46px;
 
       display: grid;
@@ -540,39 +512,37 @@
       gap: 18px;
     }
 
-    .pain-card {
+    .problem {
       padding: 27px;
 
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-
-      background: white;
+      border-radius: 14px;
     }
 
-    .pain-number {
+    .problem-number {
+      color: #909996;
+
       font-size: 11px;
       font-weight: 750;
-      color: #8c969d;
     }
 
-    .pain-card h3 {
+    .problem h3 {
       margin-top: 26px;
 
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 670;
     }
 
-    .pain-card p {
-      margin-top: 9px;
+    .problem p {
+      margin-top: 8px;
 
       color: var(--muted);
+
       font-size: 14px;
       line-height: 1.7;
     }
 
-    /* ------------------------------------------------
-       FEATURE CATEGORIES
-    ------------------------------------------------ */
+    /* Features */
 
     .feature-grid {
       margin-top: 48px;
@@ -582,164 +552,153 @@
       gap: 18px;
     }
 
-    .feature-card {
-      padding: 28px;
+    .feature {
+      min-height: 240px;
 
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-
-      background: white;
-
-      min-height: 245px;
+      padding: 27px;
 
       display: flex;
       flex-direction: column;
 
-      transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease;
-    }
+      border: 1px solid var(--line);
+      border-radius: 14px;
 
-    .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 36px rgba(20, 33, 43, 0.07);
+      background: white;
     }
 
     .feature-icon {
-      width: 42px;
-      height: 42px;
+      width: 39px;
+      height: 39px;
 
       display: grid;
       place-items: center;
 
-      border-radius: 10px;
+      border-radius: 9px;
 
-      background: var(--brand-soft);
-      color: var(--brand);
+      background: var(--green-light);
+      color: var(--green);
 
-      font-size: 18px;
       font-weight: 750;
     }
 
-    .feature-card h3 {
-      margin-top: 24px;
+    .feature h3 {
+      margin-top: 22px;
 
-      font-size: 19px;
-      font-weight: 680;
+      font-size: 18px;
+      font-weight: 670;
     }
 
-    .feature-card p {
-      margin-top: 9px;
+    .feature p {
+      margin-top: 8px;
 
       color: var(--muted);
+
       font-size: 14px;
       line-height: 1.7;
     }
 
-    .feature-bottom {
+    .feature-meta {
       margin-top: auto;
-      padding-top: 24px;
+      padding-top: 22px;
+
+      color: var(--green);
 
       font-size: 11px;
       font-weight: 700;
-      color: var(--brand-2);
     }
 
-    /* ------------------------------------------------
-       REMINDERS
-    ------------------------------------------------ */
+    /* Reminders */
 
     .reminder-layout {
-      margin-top: 50px;
+      margin-top: 48px;
 
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 70px;
+      grid-template-columns: 1fr 1fr;
+      gap: 66px;
       align-items: center;
     }
 
-    .reminder-example {
-      padding: 27px;
-
+    .reminder-card {
       border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
+      border-radius: 18px;
 
       background: white;
+
       box-shadow: var(--shadow);
+
+      padding: 26px;
     }
 
-    .reminder-header {
+    .reminder-card-title {
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      padding-bottom: 17px;
+      padding-bottom: 15px;
 
       border-bottom: 1px solid var(--line);
+
+      font-size: 13px;
+      font-weight: 650;
     }
 
-    .reminder-header strong {
-      font-size: 14px;
-    }
-
-    .status-pill {
+    .small-warning {
       padding: 5px 8px;
 
       border-radius: 6px;
 
-      background: var(--warn-soft);
-      color: var(--warn);
+      background: var(--amber-soft);
+      color: var(--amber);
 
       font-size: 10px;
       font-weight: 700;
-      text-transform: uppercase;
     }
 
-    .policy-row {
-      padding: 19px 0;
-
+    .reminder-row {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 20px;
 
+      padding: 18px 0;
+
       border-bottom: 1px solid var(--line);
     }
 
-    .policy-row:last-child {
-      border-bottom: 0;
+    .reminder-row:last-child {
+      border-bottom: none;
     }
 
-    .policy-name {
+    .reminder-name {
       font-size: 14px;
       font-weight: 650;
     }
 
-    .policy-meta {
-      margin-top: 4px;
+    .reminder-meta {
+      margin-top: 3px;
 
-      font-size: 12px;
       color: var(--muted);
+      font-size: 12px;
     }
 
-    .policy-date {
+    .reminder-time {
+      color: var(--green);
+
       font-size: 12px;
       font-weight: 650;
-
-      color: var(--brand);
     }
 
-    .reminder-points {
+    .steps {
       display: grid;
-      gap: 18px;
+      gap: 19px;
     }
 
-    .reminder-point {
+    .step {
       display: grid;
-      grid-template-columns: 32px 1fr;
+      grid-template-columns: 30px 1fr;
       gap: 14px;
     }
 
-    .point-number {
+    .step-no {
       width: 28px;
       height: 28px;
 
@@ -748,19 +707,19 @@
 
       border-radius: 50%;
 
-      background: var(--brand-soft);
-      color: var(--brand);
+      background: var(--green-light);
+      color: var(--green);
 
       font-size: 11px;
       font-weight: 750;
     }
 
-    .reminder-point strong {
+    .step strong {
       display: block;
       font-size: 14px;
     }
 
-    .reminder-point span {
+    .step span {
       display: block;
 
       margin-top: 2px;
@@ -769,12 +728,10 @@
       font-size: 13px;
     }
 
-    /* ------------------------------------------------
-       PRIVACY
-    ------------------------------------------------ */
+    /* Privacy */
 
     .privacy-grid {
-      margin-top: 48px;
+      margin-top: 47px;
 
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -784,32 +741,33 @@
     .privacy-card {
       padding: 27px;
 
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
 
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.035);
     }
 
-    .privacy-label {
-      color: #8fc2ba;
+    .privacy-card small {
+      color: #8fc3b8;
 
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 750;
-      letter-spacing: 0.07em;
       text-transform: uppercase;
+      letter-spacing: 0.07em;
     }
 
     .privacy-card h3 {
-      margin-top: 18px;
+      margin-top: 16px;
 
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 650;
     }
 
     .privacy-card p {
-      margin-top: 9px;
+      margin-top: 8px;
 
-      color: #b9cbc7;
+      color: #b7cac5;
+
       font-size: 14px;
       line-height: 1.7;
     }
@@ -824,7 +782,7 @@
     }
 
     .privacy-card li {
-      color: #d5e0dd;
+      color: #d7e3e0;
       font-size: 12px;
     }
 
@@ -832,49 +790,47 @@
       content: "✓";
       margin-right: 8px;
 
-      color: #93c9c0;
-      font-weight: 750;
+      color: #94c8bd;
     }
 
-    /* ------------------------------------------------
-       FAMILY
-    ------------------------------------------------ */
+    /* Family */
 
-    .family-layout {
+    .family-grid {
       margin-top: 48px;
 
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 65px;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 66px;
       align-items: center;
     }
 
-    .family-card {
-      padding: 28px;
+    .family-box {
+      padding: 26px;
 
       border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
+      border-radius: 18px;
 
       background: white;
+
       box-shadow: var(--shadow);
     }
 
-    .family-member {
+    .family-row {
       padding: 16px 0;
 
       display: grid;
-      grid-template-columns: 42px 1fr auto;
+      grid-template-columns: 40px 1fr auto;
       gap: 13px;
       align-items: center;
 
       border-bottom: 1px solid var(--line);
     }
 
-    .family-member:last-child {
-      border-bottom: 0;
+    .family-row:last-child {
+      border-bottom: none;
     }
 
-    .avatar {
+    .initials {
       width: 38px;
       height: 38px;
 
@@ -883,10 +839,10 @@
 
       border-radius: 50%;
 
-      background: var(--soft-2);
-      color: var(--brand);
+      background: var(--green-soft);
+      color: var(--green);
 
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 750;
     }
 
@@ -898,17 +854,17 @@
     .family-role {
       margin-top: 2px;
 
-      font-size: 11px;
       color: var(--muted);
+      font-size: 11px;
     }
 
-    .family-access {
+    .access {
       padding: 5px 8px;
 
       border-radius: 6px;
 
-      background: var(--brand-soft);
-      color: var(--brand);
+      background: var(--green-light);
+      color: var(--green);
 
       font-size: 10px;
       font-weight: 700;
@@ -928,39 +884,88 @@
       margin-top: 5px;
 
       color: var(--muted);
+
       font-size: 14px;
+      line-height: 1.7;
     }
 
-    /* ------------------------------------------------
-       TRACKABLE ITEMS
-    ------------------------------------------------ */
+    /* Categories */
 
     .chips {
-      margin-top: 38px;
+      margin-top: 37px;
 
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 9px;
     }
 
     .chip {
-      padding: 10px 14px;
+      padding: 9px 13px;
 
       border: 1px solid var(--line);
       border-radius: 999px;
 
       background: white;
 
-      color: #4e5b64;
-      font-size: 13px;
+      color: #4e5a56;
+
+      font-size: 12px;
       font-weight: 550;
     }
 
-    /* ------------------------------------------------
-       PRICING
-    ------------------------------------------------ */
+    /* Practical principles */
 
-    .pricing-grid {
+    .principles {
+      margin-top: 44px;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      border-top: 1px solid var(--line);
+    }
+
+    .principle {
+      padding: 23px 0;
+
+      display: grid;
+      grid-template-columns: 35px 1fr;
+      gap: 15px;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .principle:nth-child(odd) {
+      padding-right: 35px;
+    }
+
+    .principle:nth-child(even) {
+      padding-left: 35px;
+      border-left: 1px solid var(--line);
+    }
+
+    .principle-mark {
+      color: var(--green);
+      font-weight: 750;
+    }
+
+    .principle strong {
+      display: block;
+
+      font-size: 14px;
+    }
+
+    .principle p {
+      margin-top: 4px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    /* Pricing */
+
+    .price-grid {
       margin-top: 48px;
 
       display: grid;
@@ -969,19 +974,19 @@
     }
 
     .price-card {
-      padding: 29px;
+      padding: 28px;
 
       display: flex;
       flex-direction: column;
 
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 14px;
 
       background: white;
     }
 
-    .price-card.featured {
-      border-color: #9abbb6;
+    .price-card.highlight {
+      border-color: #a6bdb7;
       box-shadow: var(--shadow);
     }
 
@@ -997,40 +1002,38 @@
       font-size: 12px;
     }
 
-    .price {
+    .price-value {
       margin-top: 26px;
 
       font-size: 34px;
       font-weight: 720;
-      letter-spacing: -1.2px;
     }
 
-    .price small {
+    .price-value small {
+      color: var(--muted);
       font-size: 12px;
       font-weight: 500;
-      color: var(--muted);
     }
 
     .price-list {
-      margin-top: 25px;
+      margin-top: 24px;
 
       list-style: none;
 
       display: grid;
-      gap: 11px;
+      gap: 10px;
     }
 
     .price-list li {
-      color: var(--ink-2);
+      color: #45514d;
       font-size: 13px;
     }
 
     .price-list li::before {
       content: "✓";
-      margin-right: 9px;
+      margin-right: 8px;
 
-      color: var(--brand-2);
-      font-weight: 750;
+      color: var(--green);
     }
 
     .price-note {
@@ -1041,55 +1044,55 @@
       font-size: 11px;
     }
 
-    /* ------------------------------------------------
-       WAITLIST
-    ------------------------------------------------ */
+    /* Early access */
 
-    .waitlist-box {
-      padding: 62px;
+    .early-box {
+      padding: 60px;
 
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 50px;
       align-items: center;
 
-      border-radius: var(--radius-lg);
+      border-radius: 20px;
 
-      background: var(--brand);
+      background: var(--green);
       color: white;
     }
 
-    .waitlist-box h2 {
+    .early-box h2 {
       max-width: 680px;
 
-      font-size: clamp(32px, 4vw, 46px);
-      line-height: 1.12;
-      letter-spacing: -1.5px;
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(32px, 4vw, 45px);
+      line-height: 1.13;
+
+      font-weight: 500;
     }
 
-    .waitlist-box p {
-      margin-top: 13px;
-
+    .early-box p {
       max-width: 620px;
 
-      color: #c7dcd8;
-      font-size: 15px;
+      margin-top: 13px;
+
+      color: #cbdeda;
+      font-size: 14px;
     }
 
-    .waitlist-button {
+    .early-button {
       background: white;
-      color: var(--brand);
+      color: var(--green);
+
       white-space: nowrap;
     }
 
-    /* ------------------------------------------------
-       FAQ
-    ------------------------------------------------ */
+    /* FAQ */
 
     .faq {
-      margin-top: 42px;
+      max-width: 840px;
 
-      max-width: 860px;
+      margin-top: 40px;
     }
 
     .faq-item {
@@ -1103,16 +1106,17 @@
     .faq-question {
       width: 100%;
 
-      padding: 20px 0;
+      padding: 19px 0;
 
       display: flex;
       justify-content: space-between;
       gap: 20px;
 
-      border: 0;
-      background: transparent;
+      border: none;
+      background: none;
 
       color: var(--ink);
+
       text-align: left;
 
       font-size: 15px;
@@ -1121,52 +1125,48 @@
       cursor: pointer;
     }
 
-    .faq-plus {
+    .faq-icon {
       color: var(--muted);
-      font-size: 19px;
-      font-weight: 400;
+      font-size: 18px;
     }
 
     .faq-answer {
       max-height: 0;
       overflow: hidden;
 
+      transition: max-height 0.25s ease;
+
       color: var(--muted);
       font-size: 14px;
-
-      transition: max-height 0.25s ease;
     }
 
     .faq-answer-inner {
-      padding: 0 0 20px;
       max-width: 720px;
+      padding: 0 0 20px;
     }
 
     .faq-item.open .faq-answer {
-      max-height: 220px;
+      max-height: 250px;
     }
 
-    /* ------------------------------------------------
-       FOOTER
-    ------------------------------------------------ */
+    /* Footer */
 
     footer {
-      padding: 36px 0 42px;
+      padding: 35px 0 42px;
 
       border-top: 1px solid var(--line);
     }
 
-    .footer-grid {
+    .footer-top {
       display: flex;
       justify-content: space-between;
-      gap: 28px;
-      align-items: flex-start;
+      gap: 30px;
 
       color: var(--muted);
       font-size: 12px;
     }
 
-    .footer-brand {
+    .footer-name {
       color: var(--ink);
       font-weight: 700;
     }
@@ -1177,59 +1177,53 @@
       gap: 20px;
     }
 
-    .footer-links a:hover {
-      color: var(--ink);
-    }
-
-    .legal-note {
-      margin-top: 18px;
-
+    .footer-note {
       max-width: 740px;
 
-      color: #8a949b;
+      margin-top: 18px;
+
+      color: #89928f;
       font-size: 11px;
     }
 
-    /* ------------------------------------------------
-       RESPONSIVE
-    ------------------------------------------------ */
+    /* Responsive */
 
     @media (max-width: 1000px) {
       .hero-grid,
       .reminder-layout,
-      .family-layout {
+      .family-grid {
         grid-template-columns: 1fr;
       }
 
       .hero-grid {
-        gap: 55px;
+        gap: 52px;
       }
 
-      .app-preview {
-        max-width: 720px;
+      .dashboard {
+        max-width: 700px;
       }
 
+      .problem-grid,
       .feature-grid,
-      .pain-grid,
-      .pricing-grid,
-      .privacy-grid {
+      .privacy-grid,
+      .price-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .trust-grid {
+      .reason-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .trust-item:nth-child(2) {
-        border-right: 0;
+      .reason:nth-child(2) {
+        border-right: none;
       }
 
-      .trust-item:nth-child(1),
-      .trust-item:nth-child(2) {
+      .reason:nth-child(1),
+      .reason:nth-child(2) {
         border-bottom: 1px solid var(--line);
       }
 
-      .waitlist-box {
+      .early-box {
         grid-template-columns: 1fr;
       }
     }
@@ -1239,21 +1233,21 @@
         width: min(var(--container), calc(100% - 30px));
       }
 
-      .navbar {
+      .nav {
         min-height: 64px;
       }
 
-      .nav-links a:not(.nav-cta) {
+      .nav-links a:not(.nav-button) {
         display: none;
       }
 
       .hero {
-        padding: 70px 0 62px;
+        padding: 68px 0 58px;
       }
 
       .hero h1 {
-        font-size: 46px;
-        letter-spacing: -2.2px;
+        font-size: 44px;
+        letter-spacing: -1.8px;
       }
 
       .hero-copy {
@@ -1261,50 +1255,58 @@
       }
 
       .section {
-        padding: 72px 0;
+        padding: 70px 0;
       }
 
+      .problem-grid,
       .feature-grid,
-      .pain-grid,
-      .pricing-grid,
       .privacy-grid,
-      .preview-cards,
-      .trust-grid {
+      .price-grid,
+      .dashboard-grid,
+      .reason-grid,
+      .principles {
         grid-template-columns: 1fr;
       }
 
-      .trust-item {
-        border-right: 0;
+      .reason {
+        border-right: none;
         border-bottom: 1px solid var(--line);
       }
 
-      .trust-item:last-child {
-        border-bottom: 0;
+      .reason:last-child {
+        border-bottom: none;
       }
 
-      .waitlist-box {
-        padding: 38px 26px;
+      .principle:nth-child(odd),
+      .principle:nth-child(even) {
+        padding-left: 0;
+        padding-right: 0;
+        border-left: none;
       }
 
-      .footer-grid {
+      .early-box {
+        padding: 38px 25px;
+      }
+
+      .footer-top {
         flex-direction: column;
       }
     }
 
     @media (max-width: 460px) {
       .hero h1 {
-        font-size: 40px;
-      }
-
-      .button {
-        width: 100%;
+        font-size: 38px;
       }
 
       .hero-actions {
         display: grid;
       }
 
-      .preview-body {
+      .button {
+        width: 100%;
+      }
+
+      .dashboard-body {
         padding: 14px;
       }
     }
@@ -1313,32 +1315,39 @@
 
 <body>
 
-  <!-- NAV -->
-
   <header class="site-header">
-    <div class="container navbar">
+    <div class="container nav">
 
-      <a href="#top" class="logo">
-        <span class="logo-mark">
+      <a href="#top" class="brand">
+        <span class="brand-mark">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 19H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M6 16V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M12 16V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M18 16V9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path
+              d="M5 18V12M12 18V6M19 18V10"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M4 21H20"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
           </svg>
         </span>
 
         Totalfolio
       </a>
 
+
       <nav class="nav-links">
-        <a href="#features">Features</a>
+        <a href="#product">Product</a>
         <a href="#privacy">Privacy</a>
         <a href="#family">Family</a>
         <a href="#pricing">Pricing</a>
 
-        <a href="#waitlist" class="nav-cta">
-          Join waitlist
+        <a href="#early-access" class="nav-button">
+          Early access
         </a>
       </nav>
 
@@ -1355,126 +1364,157 @@
 
         <div>
 
-          <span class="eyebrow">
-            Personal financial organiser
+          <span class="small-label">
+            A financial organiser for everyday life
           </span>
 
           <h1>
-            Everything you own, owe and need to remember —
-            <span>in one place.</span>
+            Keep track of the money matters
+            <strong>you do not want to forget.</strong>
           </h1>
 
           <p class="hero-copy">
-            Totalfolio is a private financial organiser for individuals
-            and families. Keep track of investments, insurance, loans,
-            important documents, nominees and due dates without
-            depending on spreadsheets, folders and memory.
+            Totalfolio gives you one place to keep a record of your
+            investments, insurance, loans, important documents,
+            nominees and financial dates.
           </p>
 
           <div class="hero-actions">
 
-            <a href="#waitlist" class="button button-primary">
-              Join the early access list
+            <a
+              href="#early-access"
+              class="button button-primary"
+            >
+              Join early access
             </a>
 
-            <a href="#features" class="button button-secondary">
-              See how it works
+            <a
+              href="#product"
+              class="button button-secondary"
+            >
+              See what it does
             </a>
 
           </div>
 
           <p class="hero-note">
-            India-first · Mobile-first · Local storage by default
+            Built for individuals and families in India.
+            The first version is focused on mobile.
           </p>
 
         </div>
 
 
-        <!-- PRODUCT PREVIEW -->
+        <div class="dashboard">
 
-        <div class="app-preview">
+          <div class="dashboard-top">
 
-          <div class="preview-top">
+            <strong>
+              My financial records
+            </strong>
 
-            <div class="preview-title">
-              My financial life
-            </div>
-
-            <div class="preview-private">
-              Private on device
-            </div>
+            <span class="local-badge">
+              Stored on this phone
+            </span>
 
           </div>
 
 
-          <div class="preview-body">
+          <div class="dashboard-body">
 
-            <div class="overview-box">
+            <div class="main-summary">
 
-              <div class="overview-small">
-                Overview
+              <div class="summary-label">
+                This month
               </div>
 
-              <div class="overview-big">
-                One place. No scattered records.
+              <div class="summary-heading">
+                3 things need your attention
               </div>
 
-              <div class="overview-note">
-                Investments, protection, obligations and reminders.
-              </div>
-
-            </div>
-
-
-            <div class="preview-cards">
-
-              <div class="mini-card">
-                <div class="mini-label">Investments</div>
-                <div class="mini-value">12 records</div>
-                <div class="mini-note">FDs, funds, shares, PPF</div>
-              </div>
-
-              <div class="mini-card">
-                <div class="mini-label">Insurance</div>
-                <div class="mini-value">5 policies</div>
-                <div class="mini-note">Life, health and vehicle</div>
-              </div>
-
-              <div class="mini-card">
-                <div class="mini-label">Loans</div>
-                <div class="mini-value">2 active</div>
-                <div class="mini-note">Home and vehicle</div>
-              </div>
-
-              <div class="mini-card">
-                <div class="mini-label">Documents</div>
-                <div class="mini-value">Organised</div>
-                <div class="mini-note">Linked to each financial item</div>
+              <div class="summary-copy">
+                You can see what is coming up without opening five different apps.
               </div>
 
             </div>
 
 
-            <div class="due-list">
+            <div class="dashboard-grid">
 
-              <div class="due-heading">
+              <div class="dash-card">
+                <div class="dash-label">
+                  Investments
+                </div>
+                <div class="dash-value">
+                  12 records
+                </div>
+                <div class="dash-note">
+                  FDs, funds, shares, PPF
+                </div>
+              </div>
+
+
+              <div class="dash-card">
+                <div class="dash-label">
+                  Insurance
+                </div>
+                <div class="dash-value">
+                  5 policies
+                </div>
+                <div class="dash-note">
+                  Life, health, vehicle
+                </div>
+              </div>
+
+
+              <div class="dash-card">
+                <div class="dash-label">
+                  Loans
+                </div>
+                <div class="dash-value">
+                  2 active
+                </div>
+                <div class="dash-note">
+                  Home and vehicle
+                </div>
+              </div>
+
+
+              <div class="dash-card">
+                <div class="dash-label">
+                  Documents
+                </div>
+                <div class="dash-value">
+                  28 files
+                </div>
+                <div class="dash-note">
+                  Linked to the right records
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="upcoming">
+
+              <div class="upcoming-title">
                 <span>Coming up</span>
                 <span>Next 30 days</span>
               </div>
 
-              <div class="due-item">
+              <div class="upcoming-row">
                 <span>Car insurance renewal</span>
-                <span class="due-date">12 days</span>
+                <span class="days">12 days</span>
               </div>
 
-              <div class="due-item">
-                <span>Life insurance premium</span>
-                <span class="due-date">18 days</span>
+              <div class="upcoming-row">
+                <span>LIC premium</span>
+                <span class="days">18 days</span>
               </div>
 
-              <div class="due-item">
+              <div class="upcoming-row">
                 <span>Fixed deposit maturity</span>
-                <span class="due-date">27 days</span>
+                <span class="days">27 days</span>
               </div>
 
             </div>
@@ -1486,101 +1526,100 @@
     </section>
 
 
-    <!-- TRUST -->
+    <!-- QUICK PRINCIPLES -->
 
-    <div class="trust-strip">
-      <div class="container trust-grid">
+    <section class="reasons">
+      <div class="container reason-grid">
 
-        <div class="trust-item">
-          <div class="trust-title">Private by default</div>
-          <div class="trust-copy">
-            Keep records on your phone without creating a cloud account.
-          </div>
+        <div class="reason">
+          <strong>Private by default</strong>
+          <span>
+            Use the app without putting your financial records on our servers.
+          </span>
         </div>
 
-        <div class="trust-item">
-          <div class="trust-title">Works around real dates</div>
-          <div class="trust-copy">
-            Premiums, maturities, EMIs, renewals and document expiry.
-          </div>
+        <div class="reason">
+          <strong>Useful even without cloud</strong>
+          <span>
+            Records and phone reminders work locally.
+          </span>
         </div>
 
-        <div class="trust-item">
-          <div class="trust-title">Made for families</div>
-          <div class="trust-copy">
-            Keep critical financial information available to the right people.
-          </div>
+        <div class="reason">
+          <strong>Made for families</strong>
+          <span>
+            Share only what another family member should see.
+          </span>
         </div>
 
-        <div class="trust-item">
-          <div class="trust-title">No ads. No product selling.</div>
-          <div class="trust-copy">
-            Totalfolio is an organiser, not a financial-product marketplace.
-          </div>
+        <div class="reason">
+          <strong>No financial product selling</strong>
+          <span>
+            The plan is to organise your information, not sell you a fund or policy.
+          </span>
         </div>
 
       </div>
-    </div>
+    </section>
 
 
-    <!-- WHY -->
+    <!-- PROBLEM -->
 
     <section class="section">
       <div class="container">
 
-        <span class="eyebrow">
-          Why Totalfolio
+        <span class="small-label">
+          Why this exists
         </span>
 
         <h2 class="section-title">
-          Your financial life is bigger than your investment portfolio.
+          Most people do not have a portfolio problem.
+          They have an organisation problem.
         </h2>
 
         <p class="section-copy">
-          A family's finances can include investments, loans,
-          insurance policies, bank deposits, property records,
-          nominees and dozens of important dates. Most people manage
-          them across multiple apps, PDFs, emails and paper folders.
+          A family can have bank deposits, mutual funds, insurance,
+          property, loans, vehicle papers and dozens of documents.
+          The information usually ends up spread across emails,
+          WhatsApp, provider apps, spreadsheets and paper files.
         </p>
 
 
-        <div class="pain-grid">
+        <div class="problem-grid">
 
-          <article class="pain-card">
-            <span class="pain-number">01</span>
+          <article class="problem">
+            <span class="problem-number">01</span>
 
-            <h3>Important dates get missed</h3>
+            <h3>A due date is missed</h3>
 
             <p>
-              Insurance renewals, FD maturities, loan payments and
-              yearly financial tasks are easy to forget when they are
-              tracked in different places.
+              The premium was in a message somewhere.
+              The FD maturity date was written in a PDF.
+              The EMI date was remembered only after the debit failed.
             </p>
           </article>
 
 
-          <article class="pain-card">
-            <span class="pain-number">02</span>
+          <article class="problem">
+            <span class="problem-number">02</span>
 
-            <h3>Documents are scattered</h3>
+            <h3>The document cannot be found</h3>
 
             <p>
-              Policies, statements and receipts often live across
-              email, WhatsApp, physical folders and different provider
-              apps.
+              You know the policy exists, but the PDF,
+              receipt or claim number is buried inside an old email or folder.
             </p>
           </article>
 
 
-          <article class="pain-card">
-            <span class="pain-number">03</span>
+          <article class="problem">
+            <span class="problem-number">03</span>
 
-            <h3>Families do not know what exists</h3>
+            <h3>Only one person knows everything</h3>
 
             <p>
-              One person may understand the household finances while
-              everyone else has little idea which policies, assets or
-              liabilities exist.
+              The family may not know which policies, loans,
+              nominees or investments exist when that information is actually needed.
             </p>
           </article>
 
@@ -1590,130 +1629,157 @@
     </section>
 
 
-    <!-- FEATURES -->
+    <!-- PRODUCT -->
 
-    <section class="section section-soft" id="features">
+    <section class="section section-soft" id="product">
       <div class="container">
 
-        <span class="eyebrow">
-          What you can organise
+        <span class="small-label">
+          What Totalfolio keeps together
         </span>
 
         <h2 class="section-title">
-          One financial home, without replacing the services you already use.
+          One record for each thing that matters.
         </h2>
 
         <p class="section-copy">
-          Totalfolio is designed as an organisational layer over your
-          existing banks, insurers, brokers and financial products.
+          Totalfolio does not replace your bank, insurer or broker.
+          It gives you a simple place to keep the important information
+          about each financial item.
         </p>
 
 
         <div class="feature-grid">
 
-          <article class="feature-card">
+          <article class="feature">
 
-            <div class="feature-icon">₹</div>
+            <div class="feature-icon">
+              ₹
+            </div>
 
-            <h3>Investments & assets</h3>
+            <h3>
+              Investments
+            </h3>
 
             <p>
-              Track fixed deposits, mutual funds, shares, PPF, NPS,
-              property, gold and other assets in a consistent format.
+              Keep a record of fixed deposits, mutual funds,
+              shares, PPF, NPS, gold, property and other investments.
             </p>
 
-            <div class="feature-bottom">
-              Built-in and custom categories
+            <div class="feature-meta">
+              Built-in templates and custom items
             </div>
 
           </article>
 
 
-          <article class="feature-card">
+          <article class="feature">
 
-            <div class="feature-icon">✓</div>
+            <div class="feature-icon">
+              ✓
+            </div>
 
-            <h3>Insurance</h3>
+            <h3>
+              Insurance
+            </h3>
 
             <p>
-              Keep policy numbers, premiums, cover, nominees,
-              renewal dates, claim contacts and documents together.
+              Save the policy details you actually need,
+              including premium dates, cover, nominee,
+              insurer contacts and documents.
             </p>
 
-            <div class="feature-bottom">
-              Life · Health · Vehicle · More
+            <div class="feature-meta">
+              Life, health, vehicle and more
             </div>
 
           </article>
 
 
-          <article class="feature-card">
+          <article class="feature">
 
-            <div class="feature-icon">↓</div>
+            <div class="feature-icon">
+              ↓
+            </div>
 
-            <h3>Loans & liabilities</h3>
+            <h3>
+              Loans
+            </h3>
 
             <p>
-              Maintain important details for home, vehicle, personal
-              and education loans without storing banking passwords.
+              Keep lender details, EMI dates,
+              outstanding amounts, interest information
+              and closure documents together.
             </p>
 
-            <div class="feature-bottom">
-              EMI · Interest · Closure
+            <div class="feature-meta">
+              Home, vehicle, personal and education
             </div>
 
           </article>
 
 
-          <article class="feature-card">
+          <article class="feature">
 
-            <div class="feature-icon">◷</div>
+            <div class="feature-icon">
+              ◷
+            </div>
 
-            <h3>Reminders that mean something</h3>
+            <h3>
+              Reminders
+            </h3>
 
             <p>
-              Set alerts for premiums, maturities, renewals, EMIs,
-              document expiry and other financial deadlines.
+              Set reminders for renewals, premiums,
+              maturities, EMIs, yearly deposits and document expiry.
             </p>
 
-            <div class="feature-bottom">
-              Local reminders work offline
+            <div class="feature-meta">
+              Works locally on the phone
             </div>
 
           </article>
 
 
-          <article class="feature-card">
+          <article class="feature">
 
-            <div class="feature-icon">▤</div>
+            <div class="feature-icon">
+              ▤
+            </div>
 
-            <h3>Documents</h3>
+            <h3>
+              Documents
+            </h3>
 
             <p>
-              Attach policies, statements, receipts and photos directly
-              to the financial item they belong to.
+              Attach the policy, receipt, statement
+              or photo to the record it belongs to.
             </p>
 
-            <div class="feature-bottom">
-              Find the right document quickly
+            <div class="feature-meta">
+              No searching across multiple folders
             </div>
 
           </article>
 
 
-          <article class="feature-card">
+          <article class="feature">
 
-            <div class="feature-icon">+</div>
+            <div class="feature-icon">
+              +
+            </div>
 
-            <h3>Anything else</h3>
+            <h3>
+              Your own categories
+            </h3>
 
             <p>
-              Create your own financial item type, fields and reminder
-              dates for investments or obligations we did not anticipate.
+              If we do not have a category for something you own,
+              create one and choose which information and dates to track.
             </p>
 
-            <div class="feature-bottom">
-              Your finances do not need to fit our categories
+            <div class="feature-meta">
+              Not limited to a fixed investment list
             </div>
 
           </article>
@@ -1729,78 +1795,88 @@
     <section class="section">
       <div class="container">
 
-        <span class="eyebrow">
-          More than a static portfolio
+        <span class="small-label">
+          Dates matter
         </span>
 
         <h2 class="section-title">
-          Totalfolio helps you remember what happens next.
+          A financial record should tell you what needs to happen next.
         </h2>
 
         <p class="section-copy">
-          Every financial item can have important dates attached to it,
-          so a record becomes useful instead of simply sitting in a list.
+          Saving a policy number is useful.
+          Knowing that the premium is due in three days is much more useful.
         </p>
 
 
         <div class="reminder-layout">
 
-          <div class="reminder-example">
+          <div class="reminder-card">
 
-            <div class="reminder-header">
-              <strong>Upcoming responsibilities</strong>
-              <span class="status-pill">3 upcoming</span>
+            <div class="reminder-card-title">
+
+              <span>
+                Upcoming
+              </span>
+
+              <span class="small-warning">
+                3 items
+              </span>
+
             </div>
 
 
-            <div class="policy-row">
+            <div class="reminder-row">
 
               <div>
-                <div class="policy-name">
+                <div class="reminder-name">
                   Health insurance
                 </div>
-                <div class="policy-meta">
-                  Family floater · Renewal
+
+                <div class="reminder-meta">
+                  Family floater renewal
                 </div>
               </div>
 
-              <div class="policy-date">
+              <div class="reminder-time">
                 30 days
               </div>
 
             </div>
 
 
-            <div class="policy-row">
+            <div class="reminder-row">
 
               <div>
-                <div class="policy-name">
+                <div class="reminder-name">
                   Home loan
                 </div>
-                <div class="policy-meta">
-                  EMI · Keep funds ready
+
+                <div class="reminder-meta">
+                  Keep funds ready for EMI
                 </div>
               </div>
 
-              <div class="policy-date">
+              <div class="reminder-time">
                 3 days
               </div>
 
             </div>
 
 
-            <div class="policy-row">
+            <div class="reminder-row">
 
               <div>
-                <div class="policy-name">
-                  Bank FD
+                <div class="reminder-name">
+                  Bank fixed deposit
                 </div>
-                <div class="policy-meta">
-                  Maturity · Renew or withdraw?
+
+                <div class="reminder-meta">
+                  Renew or withdraw?
                 </div>
               </div>
 
-              <div class="policy-date">
+              <div class="reminder-time">
                 15 days
               </div>
 
@@ -1809,59 +1885,63 @@
           </div>
 
 
-          <div class="reminder-points">
+          <div class="steps">
 
-            <div class="reminder-point">
+            <div class="step">
 
-              <span class="point-number">1</span>
+              <span class="step-no">1</span>
 
               <div>
-                <strong>Add the financial item once</strong>
+                <strong>Add the item once</strong>
+
                 <span>
-                  Record the important information and relevant dates.
+                  Enter the important details and dates.
                 </span>
               </div>
 
             </div>
 
 
-            <div class="reminder-point">
+            <div class="step">
 
-              <span class="point-number">2</span>
+              <span class="step-no">2</span>
 
               <div>
-                <strong>Choose how early you want to know</strong>
+                <strong>Choose the reminders</strong>
+
                 <span>
-                  Use sensible defaults or customise reminders yourself.
+                  Use suggested reminder timings or change them yourself.
                 </span>
               </div>
 
             </div>
 
 
-            <div class="reminder-point">
+            <div class="step">
 
-              <span class="point-number">3</span>
+              <span class="step-no">3</span>
 
               <div>
-                <strong>Mark it paid or renewed</strong>
+                <strong>Mark it done</strong>
+
                 <span>
-                  Record the action and roll the next date forward.
+                  When something is paid or renewed,
+                  record it and move the next date forward.
                 </span>
               </div>
 
             </div>
 
 
-            <div class="reminder-point">
+            <div class="step">
 
-              <span class="point-number">4</span>
+              <span class="step-no">4</span>
 
               <div>
-                <strong>Bring family in when needed</strong>
+                <strong>Bring in family only when useful</strong>
+
                 <span>
-                  Family plans can notify trusted members when an
-                  important task is still pending.
+                  A family member can be reminded if an important item is still pending.
                 </span>
               </div>
 
@@ -1880,17 +1960,18 @@
     <section class="section section-dark" id="privacy">
       <div class="container">
 
-        <span class="eyebrow">
-          Privacy is part of the product
+        <span class="small-label">
+          Where your data lives
         </span>
 
         <h2 class="section-title">
-          You decide where your financial data lives.
+          Cloud storage should be a choice, not a requirement.
         </h2>
 
         <p class="section-copy">
-          The app is being designed so that basic use does not require
-          uploading your financial records to Totalfolio's servers.
+          The basic app is planned to keep your financial records
+          on your phone. Cloud services are for people who want backup,
+          multiple devices or family sharing.
         </p>
 
 
@@ -1898,21 +1979,22 @@
 
           <article class="privacy-card">
 
-            <div class="privacy-label">
-              Mode 01
-            </div>
+            <small>
+              Option 1
+            </small>
 
-            <h3>Phone only</h3>
+            <h3>
+              Phone only
+            </h3>
 
             <p>
-              Keep the master copy of your financial records encrypted
-              on your own phone.
+              Keep the main copy of your records encrypted on your phone.
             </p>
 
             <ul>
-              <li>No cloud account required</li>
-              <li>Local reminders</li>
+              <li>No cloud account needed</li>
               <li>PIN and biometric lock</li>
+              <li>Local reminders</li>
             </ul>
 
           </article>
@@ -1920,21 +2002,22 @@
 
           <article class="privacy-card">
 
-            <div class="privacy-label">
-              Mode 02
-            </div>
+            <small>
+              Option 2
+            </small>
 
-            <h3>Your own backup</h3>
+            <h3>
+              Your own backup
+            </h3>
 
             <p>
-              Keep an encrypted backup file in your own Google Drive or
-              iCloud account.
+              Keep an encrypted backup file in your own Google Drive or iCloud.
             </p>
 
             <ul>
-              <li>Backup without family sharing</li>
+              <li>Backup without sharing</li>
               <li>Encrypted before upload</li>
-              <li>Restore to a new phone</li>
+              <li>Restore on a new phone</li>
             </ul>
 
           </article>
@@ -1942,19 +2025,21 @@
 
           <article class="privacy-card">
 
-            <div class="privacy-label">
-              Mode 03
-            </div>
+            <small>
+              Option 3
+            </small>
 
-            <h3>Totalfolio cloud</h3>
+            <h3>
+              Totalfolio cloud
+            </h3>
 
             <p>
-              Use encrypted cloud sync when you need multiple devices,
-              web access or family sharing.
+              Turn on cloud sync if you want family sharing,
+              multiple devices or a web companion later.
             </p>
 
             <ul>
-              <li>Optional paid feature</li>
+              <li>Optional paid service</li>
               <li>Encrypted records</li>
               <li>Family permissions</li>
             </ul>
@@ -1972,63 +2057,90 @@
     <section class="section section-soft" id="family">
       <div class="container">
 
-        <span class="eyebrow">
-          Family money matters
+        <span class="small-label">
+          Families
         </span>
 
         <h2 class="section-title">
-          The information should still be useful when you are not the person looking at it.
+          Share the right information with the right person.
         </h2>
 
         <p class="section-copy">
-          Totalfolio is being designed for real households where
-          parents, partners and children may need access to different
-          pieces of financial information.
+          A spouse may need to see household insurance.
+          A parent may only need reminders.
+          Some financial items may remain private.
         </p>
 
 
-        <div class="family-layout">
+        <div class="family-grid">
 
-          <div class="family-card">
+          <div class="family-box">
 
-            <div class="family-member">
+            <div class="family-row">
 
-              <span class="avatar">AK</span>
+              <span class="initials">
+                AK
+              </span>
 
               <div>
-                <div class="family-name">You</div>
-                <div class="family-role">Family vault owner</div>
+                <div class="family-name">
+                  You
+                </div>
+
+                <div class="family-role">
+                  Family vault owner
+                </div>
               </div>
 
-              <span class="family-access">Owner</span>
+              <span class="access">
+                Owner
+              </span>
 
             </div>
 
 
-            <div class="family-member">
+            <div class="family-row">
 
-              <span class="avatar">PK</span>
+              <span class="initials">
+                PK
+              </span>
 
               <div>
-                <div class="family-name">Partner</div>
-                <div class="family-role">Insurance & household records</div>
+                <div class="family-name">
+                  Partner
+                </div>
+
+                <div class="family-role">
+                  Household policies and records
+                </div>
               </div>
 
-              <span class="family-access">Editor</span>
+              <span class="access">
+                Editor
+              </span>
 
             </div>
 
 
-            <div class="family-member">
+            <div class="family-row">
 
-              <span class="avatar">RK</span>
+              <span class="initials">
+                RK
+              </span>
 
               <div>
-                <div class="family-name">Parent</div>
-                <div class="family-role">Health policy and reminders</div>
+                <div class="family-name">
+                  Parent
+                </div>
+
+                <div class="family-role">
+                  Health insurance and reminders
+                </div>
               </div>
 
-              <span class="family-access">Viewer</span>
+              <span class="access">
+                Viewer
+              </span>
 
             </div>
 
@@ -2039,11 +2151,14 @@
 
             <div class="family-point">
 
-              <h3>Keep some items private</h3>
+              <h3>
+                Parents
+              </h3>
 
               <p>
-                Sharing a family vault should not mean sharing every
-                personal financial record.
+                Help parents remember policy renewals,
+                medical insurance dates and other important items
+                without making them maintain a complicated app.
               </p>
 
             </div>
@@ -2051,11 +2166,14 @@
 
             <div class="family-point">
 
-              <h3>Manage parents' important dates</h3>
+              <h3>
+                Emergency information
+              </h3>
 
               <p>
-                Children can help elderly parents stay on top of policies,
-                renewals and other financial responsibilities.
+                Keep important insurance contacts,
+                nominees and policy information available
+                when someone in the family actually needs it.
               </p>
 
             </div>
@@ -2063,11 +2181,13 @@
 
             <div class="family-point">
 
-              <h3>Prepare for emergencies</h3>
+              <h3>
+                Private records
+              </h3>
 
               <p>
-                Important policy, nominee and contact information should
-                be available when the family needs it most.
+                Family sharing should not mean everyone
+                sees every financial item.
               </p>
 
             </div>
@@ -2080,22 +2200,22 @@
     </section>
 
 
-    <!-- WHAT CAN BE TRACKED -->
+    <!-- CATEGORIES -->
 
     <section class="section">
       <div class="container">
 
-        <span class="eyebrow">
-          Flexible enough for real life
+        <span class="small-label">
+          Things you can keep track of
         </span>
 
         <h2 class="section-title">
-          Not just mutual funds and stocks.
+          More than stocks and mutual funds.
         </h2>
 
         <p class="section-copy">
-          The same organisational model can be used across most of the
-          financial records an Indian household may have.
+          Totalfolio is planned around the mix of financial products
+          and responsibilities a household may actually have.
         </p>
 
 
@@ -2104,10 +2224,10 @@
           <span class="chip">Fixed deposits</span>
           <span class="chip">Recurring deposits</span>
           <span class="chip">Mutual funds</span>
-          <span class="chip">Shares & demat</span>
+          <span class="chip">Shares</span>
           <span class="chip">PPF</span>
-          <span class="chip">NPS</span>
           <span class="chip">EPF</span>
+          <span class="chip">NPS</span>
           <span class="chip">Life insurance</span>
           <span class="chip">Health insurance</span>
           <span class="chip">Car insurance</span>
@@ -2115,12 +2235,113 @@
           <span class="chip">Home loans</span>
           <span class="chip">Vehicle loans</span>
           <span class="chip">Credit cards</span>
+          <span class="chip">Bank accounts</span>
           <span class="chip">Property</span>
           <span class="chip">Gold</span>
-          <span class="chip">Bank accounts</span>
           <span class="chip">Money lent</span>
-          <span class="chip">Documents</span>
+          <span class="chip">Personal documents</span>
           <span class="chip">Custom items</span>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- PRACTICAL RULES -->
+
+    <section class="section section-soft">
+      <div class="container">
+
+        <span class="small-label">
+          What we will not do
+        </span>
+
+        <h2 class="section-title">
+          A finance app should earn trust by asking for less.
+        </h2>
+
+
+        <div class="principles">
+
+          <div class="principle">
+
+            <span class="principle-mark">
+              01
+            </span>
+
+            <div>
+              <strong>
+                No UPI PINs or banking passwords
+              </strong>
+
+              <p>
+                Totalfolio does not need your login credentials
+                to help you organise your records.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="principle">
+
+            <span class="principle-mark">
+              02
+            </span>
+
+            <div>
+              <strong>
+                No ads
+              </strong>
+
+              <p>
+                A personal finance organiser should not depend
+                on advertising inside a user's financial records.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="principle">
+
+            <span class="principle-mark">
+              03
+            </span>
+
+            <div>
+              <strong>
+                No investment advice
+              </strong>
+
+              <p>
+                Totalfolio is intended to organise your information,
+                not tell you which fund or share to buy.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="principle">
+
+            <span class="principle-mark">
+              04
+            </span>
+
+            <div>
+              <strong>
+                No forced cloud account
+              </strong>
+
+              <p>
+                Basic phone-only use should remain useful
+                without signing up for cloud storage.
+              </p>
+            </div>
+
+          </div>
 
         </div>
 
@@ -2130,24 +2351,24 @@
 
     <!-- PRICING -->
 
-    <section class="section section-soft" id="pricing">
+    <section class="section" id="pricing">
       <div class="container">
 
-        <span class="eyebrow">
+        <span class="small-label">
           Planned pricing
         </span>
 
         <h2 class="section-title">
-          Keep the private phone app useful. Pay only when the service costs money to run.
+          Keep the basic organiser free.
+          Charge for services that have ongoing costs.
         </h2>
 
         <p class="section-copy">
-          These are early pricing ideas being tested before launch and
-          may change based on user feedback.
+          These prices are being tested and are not final.
         </p>
 
 
-        <div class="pricing-grid">
+        <div class="price-grid">
 
           <article class="price-card">
 
@@ -2156,42 +2377,44 @@
             </div>
 
             <div class="price-for">
-              For personal phone-only use
+              Personal phone-only use
             </div>
 
-            <div class="price">
+            <div class="price-value">
               ₹0
             </div>
 
             <ul class="price-list">
               <li>Financial records</li>
-              <li>Custom item types</li>
-              <li>Local reminders</li>
+              <li>Custom categories</li>
+              <li>Phone reminders</li>
               <li>Documents on device</li>
-              <li>PIN & biometric lock</li>
+              <li>PIN and biometric lock</li>
               <li>Own encrypted backup</li>
             </ul>
 
             <div class="price-note">
-              No ads. No data selling.
+              No ads and no financial product selling.
             </div>
 
           </article>
 
 
-          <article class="price-card featured">
+          <article class="price-card highlight">
 
             <div class="price-name">
               Plus
             </div>
 
             <div class="price-for">
-              For one person across devices
+              One person using more than one device
             </div>
 
-            <div class="price">
+            <div class="price-value">
               ₹799
-              <small>/ year planned</small>
+              <small>
+                per year planned
+              </small>
             </div>
 
             <ul class="price-list">
@@ -2199,12 +2422,12 @@
               <li>Encrypted cloud sync</li>
               <li>Multiple devices</li>
               <li>Cloud document storage</li>
-              <li>Web companion later</li>
               <li>Email reminders</li>
+              <li>Web access later</li>
             </ul>
 
             <div class="price-note">
-              Planned pricing, not yet on sale.
+              Planned price. Not yet available for purchase.
             </div>
 
           </article>
@@ -2217,25 +2440,27 @@
             </div>
 
             <div class="price-for">
-              For households managing finances together
+              Households managing financial records together
             </div>
 
-            <div class="price">
+            <div class="price-value">
               ₹1,499
-              <small>/ year planned</small>
+              <small>
+                per year planned
+              </small>
             </div>
 
             <ul class="price-list">
               <li>Everything in Plus</li>
-              <li>Shared family vault</li>
-              <li>Up to 6 family members</li>
-              <li>Private records</li>
-              <li>Family reminder escalation</li>
+              <li>Family vault</li>
+              <li>Up to 6 members</li>
+              <li>Private items</li>
+              <li>Family reminders</li>
               <li>Emergency access features</li>
             </ul>
 
             <div class="price-note">
-              Planned pricing, subject to validation.
+              Planned price. Subject to early user feedback.
             </div>
 
           </article>
@@ -2248,15 +2473,15 @@
 
     <!-- FAQ -->
 
-    <section class="section">
+    <section class="section section-soft">
       <div class="container">
 
-        <span class="eyebrow">
-          Questions
+        <span class="small-label">
+          Common questions
         </span>
 
         <h2 class="section-title">
-          A few things we want to make clear from the beginning.
+          Before you trust a finance app, you should ask questions.
         </h2>
 
 
@@ -2264,16 +2489,23 @@
 
           <div class="faq-item">
 
-            <button class="faq-question" type="button">
-              <span>Is Totalfolio a broker or investment adviser?</span>
-              <span class="faq-plus">+</span>
+            <button type="button" class="faq-question">
+
+              <span>
+                Is Totalfolio a broker or investment adviser?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+
             </button>
 
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                No. Totalfolio is being built as a record-keeping,
-                organisation and reminder tool. It is not intended to
-                tell users what to buy or sell.
+                No. Totalfolio is planned as a financial record-keeping
+                and reminder tool. It is not intended to recommend
+                which investment you should buy or sell.
               </div>
             </div>
 
@@ -2282,16 +2514,24 @@
 
           <div class="faq-item">
 
-            <button class="faq-question" type="button">
-              <span>Do I have to upload my finances to the cloud?</span>
-              <span class="faq-plus">+</span>
+            <button type="button" class="faq-question">
+
+              <span>
+                Do I need to put all my financial information in the cloud?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+
             </button>
 
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                No. The planned free mode keeps the master copy on your
-                phone. Cloud sync is intended to be optional for people
-                who need multiple devices or family sharing.
+                No. The planned free version keeps the main copy
+                of your records on your phone.
+                Cloud features are intended for backup,
+                multiple devices and family sharing.
               </div>
             </div>
 
@@ -2300,15 +2540,22 @@
 
           <div class="faq-item">
 
-            <button class="faq-question" type="button">
-              <span>Will Totalfolio store my UPI PIN or banking password?</span>
-              <span class="faq-plus">+</span>
+            <button type="button" class="faq-question">
+
+              <span>
+                Will you ask for my bank password or UPI PIN?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+
             </button>
 
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                No. Totalfolio is not intended to store net-banking
-                passwords, UPI PINs, OTPs or card CVVs.
+                No. Totalfolio does not need net-banking passwords,
+                UPI PINs, OTPs or card CVVs for the product being built.
               </div>
             </div>
 
@@ -2317,16 +2564,22 @@
 
           <div class="faq-item">
 
-            <button class="faq-question" type="button">
-              <span>Can I add an investment type that is not listed?</span>
-              <span class="faq-plus">+</span>
+            <button type="button" class="faq-question">
+
+              <span>
+                What if I have an investment you have not listed?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+
             </button>
 
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                Yes. Custom financial items are part of the planned core
-                product so the app does not depend on a fixed list of
-                investment categories.
+                You will be able to create a custom financial item
+                and choose the fields and dates that matter for it.
               </div>
             </div>
 
@@ -2335,16 +2588,23 @@
 
           <div class="faq-item">
 
-            <button class="faq-question" type="button">
-              <span>Is Totalfolio available today?</span>
-              <span class="faq-plus">+</span>
+            <button type="button" class="faq-question">
+
+              <span>
+                Is the app available now?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+
             </button>
 
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                Totalfolio is currently being developed. You can join the
-                early access list to hear about testing and launch
-                updates.
+                Not yet. Totalfolio is currently being developed.
+                We are collecting interest from people who would like
+                to test the product before launch.
               </div>
             </div>
 
@@ -2356,31 +2616,32 @@
     </section>
 
 
-    <!-- WAITLIST -->
+    <!-- EARLY ACCESS -->
 
-    <section class="section" id="waitlist">
+    <section class="section" id="early-access">
       <div class="container">
 
-        <div class="waitlist-box">
+        <div class="early-box">
 
           <div>
 
             <h2>
-              Help shape Totalfolio before launch.
+              Would you actually use something like this?
             </h2>
 
             <p>
-              We are building the first version around the financial
-              organisation problems real individuals and families deal
-              with. If this sounds useful, join the early access list.
+              We are looking for individuals and families
+              who currently manage investments, policies,
+              loans or financial paperwork across several places.
+              Early users will help decide what gets built first.
             </p>
 
           </div>
 
 
           <a
-            class="button waitlist-button"
-            href="mailto:founder@totalfolio.app?subject=Totalfolio%20Early%20Access&body=Hi%20Totalfolio%2C%0A%0AI%27d%20like%20to%20join%20the%20early%20access%20list.%0A%0AName%3A%0ACity%3A%0AWhat%20I%20would%20like%20to%20manage%20in%20Totalfolio%3A%0A"
+            href="mailto:founder@totalfolio.app?subject=Totalfolio%20Early%20Access&body=Hi%20Totalfolio%2C%0A%0AI%20would%20like%20to%20join%20the%20early%20access%20list.%0A%0AName%3A%0ACity%3A%0AThe%20financial%20things%20I%20currently%20manage%3A%0A"
+            class="button early-button"
           >
             Join early access
           </a>
@@ -2393,15 +2654,13 @@
   </main>
 
 
-  <!-- FOOTER -->
-
   <footer>
     <div class="container">
 
-      <div class="footer-grid">
+      <div class="footer-top">
 
         <div>
-          <div class="footer-brand">
+          <div class="footer-name">
             Totalfolio
           </div>
 
@@ -2413,7 +2672,7 @@
 
         <div class="footer-links">
 
-          <a href="#features">
+          <a href="#product">
             Product
           </a>
 
@@ -2426,7 +2685,7 @@
           </a>
 
           <a href="mailto:founder@totalfolio.app">
-            founder@totalfolio.app
+            Contact
           </a>
 
           <a
@@ -2442,12 +2701,12 @@
       </div>
 
 
-      <div class="legal-note">
-        Totalfolio is currently in development. Product features and
-        pricing shown on this website describe the current product plan
-        and may change before public launch. Totalfolio does not provide
-        investment, tax, insurance or legal advice.
-      </div>
+      <p class="footer-note">
+        Totalfolio is currently in development.
+        Features and pricing shown here describe the current product plan
+        and may change before launch.
+        Totalfolio does not provide investment, tax, insurance or legal advice.
+      </p>
 
     </div>
   </footer>
@@ -2463,19 +2722,21 @@
       button.addEventListener("click", function() {
 
         const item = button.parentElement;
-        const icon = button.querySelector(".faq-plus");
+        const icon = button.querySelector(".faq-icon");
 
-        document.querySelectorAll(".faq-item").forEach(function(otherItem) {
+        document.querySelectorAll(".faq-item").forEach(function(other) {
 
-          if (otherItem !== item) {
-            otherItem.classList.remove("open");
+          if (other !== item) {
+
+            other.classList.remove("open");
 
             const otherIcon =
-              otherItem.querySelector(".faq-plus");
+              other.querySelector(".faq-icon");
 
             if (otherIcon) {
               otherIcon.textContent = "+";
             }
+
           }
 
         });
