@@ -1,46 +1,941 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Totalfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Totalfolio — Your Financial Life, Organized</title>
+
+  <meta
+    name="description"
+    content="Totalfolio is a privacy-first financial management platform for individuals and families to organize investments, insurance, loans, assets, documents and important financial reminders."
+  />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <meta property="og:title" content="Totalfolio" />
+  <meta property="og:description" content="Your financial life, organized in one place." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://totalfolio.app" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: #07111f;
+      color: #e8edf5;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7, 17, 31, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #3b82f6, #22c55e);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #aeb9ca;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-cta {
+      padding: 10px 17px;
+      border-radius: 10px;
+      background: #ffffff;
+      color: #08111f !important;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      padding: 115px 0 95px;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 700px;
+      height: 500px;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(
+        circle,
+        rgba(59, 130, 246, 0.17),
+        transparent 65%
+      );
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      background: rgba(59, 130, 246, 0.08);
+      color: #93c5fd;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: auto;
+      font-size: clamp(46px, 7vw, 78px);
+      line-height: 1.03;
+      letter-spacing: -3px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #60a5fa, #5eead4);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 27px auto 0;
+      font-size: 19px;
+      color: #aeb9ca;
+    }
+
+    .hero-actions {
+      margin-top: 38px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 21px;
+      border-radius: 11px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #07111f;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255,255,255,0.12);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #d5deeb;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* MOCK DASHBOARD */
+
+    .dashboard-wrapper {
+      margin-top: 75px;
+    }
+
+    .dashboard {
+      max-width: 950px;
+      margin: auto;
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(
+        145deg,
+        rgba(18, 34, 55, 0.88),
+        rgba(10, 22, 39, 0.88)
+      );
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.35);
+      text-align: left;
+    }
+
+    .dash-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .dash-title {
+      font-weight: 700;
+    }
+
+    .status {
+      color: #86efac;
+      font-size: 13px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .stat-label {
+      color: #8694a8;
+      font-size: 12px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .stat-value {
+      font-size: 20px;
+      font-weight: 750;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-label {
+      color: #60a5fa;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 1.6px;
+      margin-bottom: 13px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -1.7px;
+      max-width: 720px;
+    }
+
+    .section-description {
+      color: #9ba9bc;
+      max-width: 660px;
+      margin-top: 18px;
+      font-size: 17px;
+    }
+
+    /* FEATURES */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 48px;
+    }
+
+    .feature {
+      padding: 28px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      background: rgba(255, 255, 255, 0.025);
+      transition: 0.25s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      border-color: rgba(96, 165, 250, 0.4);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      margin-bottom: 20px;
+      background: rgba(59, 130, 246, 0.12);
+      font-size: 20px;
+    }
+
+    .feature h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* PRIVACY */
+
+    .privacy-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(
+        135deg,
+        rgba(34, 197, 94, 0.05),
+        rgba(59, 130, 246, 0.06)
+      );
+      border-radius: 25px;
+      padding: 55px;
+    }
+
+    .privacy-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .privacy-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      color: #b7c3d3;
+    }
+
+    .check {
+      color: #4ade80;
+      font-weight: bold;
+    }
+
+    /* HOW */
+
+    .steps {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .step-number {
+      color: #60a5fa;
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 13px;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* AI */
+
+    .ai {
+      text-align: center;
+    }
+
+    .ai .section-title,
+    .ai .section-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .ai-card {
+      max-width: 780px;
+      margin: 45px auto 0;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(139, 92, 246, 0.05);
+      border: 1px solid rgba(139, 92, 246, 0.23);
+      text-align: left;
+    }
+
+    .ai-example {
+      color: #c4b5fd;
+      font-size: 14px;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .ai-response {
+      color: #bdc7d6;
+      line-height: 1.8;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      padding: 90px 30px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top, rgba(59,130,246,.18), transparent 50%),
+        rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 5vw, 50px);
+      letter-spacing: -1.8px;
+    }
+
+    .cta p {
+      max-width: 580px;
+      margin: 18px auto 30px;
+      color: #99a7ba;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 80px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 35px 0;
+      color: #718096;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .features-grid,
+      .steps,
+      .stats,
+      .privacy-box {
+        grid-template-columns: 1fr;
+      }
+
+      .privacy-box {
+        padding: 34px 25px;
+        gap: 35px;
+      }
+
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .dashboard {
+        padding: 14px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+    }
+  </style>
 </head>
-<body style="font-family:Arial;max-width:850px;margin:60px auto;padding:20px;line-height:1.6">
 
-  <h1>Totalfolio</h1>
+<body>
 
-  <h2>Your financial life, organized in one place.</h2>
-
-  <p>
-    Totalfolio is a privacy-first personal financial management platform
-    for individuals and families.
-  </p>
-
-  <p>
-    It helps users organize investments, insurance policies, loans,
-    fixed deposits, mutual funds, stocks, assets and important financial
-    documents, while setting reminders for renewals, premiums,
-    maturities and other important dates.
-  </p>
-
-  <h3>What we're building</h3>
-
-  <ul>
-    <li>Unified financial portfolio tracking</li>
-    <li>Insurance, loan and investment management</li>
-    <li>Smart reminders and alerts</li>
-    <li>Optional family sharing</li>
-    <li>Privacy-first local or cloud storage</li>
-    <li>AI-assisted financial document organization</li>
-  </ul>
-
-  <h3>Contact</h3>
-
-  <p>
-    <a href="mailto:founder@totalfolio.app">
-      founder@totalfolio.app
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#">
+      <div class="brand-icon">T</div>
+      Totalfolio
     </a>
-  </p>
+
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#ai">AI</a>
+      <a href="mailto:founder@totalfolio.app" class="nav-cta">
+        Contact
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="container">
+
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Building the future of personal financial organization
+      </div>
+
+      <h1>
+        Your entire financial life,
+        <span class="gradient-text">finally organized.</span>
+      </h1>
+
+      <p>
+        Totalfolio is a privacy-first financial management platform
+        designed to help individuals and families organize investments,
+        insurance, loans, assets, documents and important financial dates
+        in one place.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#features" class="btn btn-primary">
+          Explore Totalfolio
+        </a>
+
+        <a href="mailto:founder@totalfolio.app" class="btn btn-secondary">
+          Get in touch
+        </a>
+      </div>
+
+
+      <div class="dashboard-wrapper">
+        <div class="dashboard">
+
+          <div class="dash-header">
+            <div class="dash-title">Financial Overview</div>
+            <div class="status">● Private workspace</div>
+          </div>
+
+          <div class="stats">
+
+            <div class="stat">
+              <div class="stat-label">Assets</div>
+              <div class="stat-value">Investments & Assets</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Protection</div>
+              <div class="stat-value">Insurance & Policies</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Upcoming</div>
+              <div class="stat-value">Smart Reminders</div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FEATURES -->
+
+  <section id="features">
+    <div class="container">
+
+      <div class="section-label">One financial home</div>
+
+      <h2 class="section-title">
+        Built for everything that makes up your financial life.
+      </h2>
+
+      <p class="section-description">
+        Financial information is often spread across apps, documents,
+        emails and physical records. Totalfolio is being designed to
+        bring that information together without forcing users into a
+        single investment provider.
+      </p>
+
+
+      <div class="features-grid">
+
+        <article class="feature">
+          <div class="icon">◫</div>
+          <h3>Unified Portfolio</h3>
+          <p>
+            Organize fixed deposits, mutual funds, stocks, retirement
+            accounts, property, gold and other assets.
+          </p>
+        </article>
+
+
+        <article class="feature">
+          <div class="icon">◇</div>
+          <h3>Insurance & Policies</h3>
+          <p>
+            Keep important details about health, life, vehicle and other
+            insurance policies together.
+          </p>
+        </article>
+
+
+        <article class="feature">
+          <div class="icon">⌁</div>
+          <h3>Loans & Liabilities</h3>
+          <p>
+            Maintain a clear record of home loans, personal loans,
+            vehicle loans and other financial obligations.
+          </p>
+        </article>
+
+
+        <article class="feature">
+          <div class="icon">◷</div>
+          <h3>Smart Reminders</h3>
+          <p>
+            Plan reminders for premiums, maturities, renewals, EMIs and
+            other important financial dates.
+          </p>
+        </article>
+
+
+        <article class="feature">
+          <div class="icon">▣</div>
+          <h3>Document Organization</h3>
+          <p>
+            Associate important documents with the financial products
+            and assets they belong to.
+          </p>
+        </article>
+
+
+        <article class="feature">
+          <div class="icon">+</div>
+          <h3>Custom Financial Items</h3>
+          <p>
+            Add financial assets or obligations that do not fit into
+            predefined categories.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PRIVACY -->
+
+  <section id="privacy">
+    <div class="container">
+
+      <div class="privacy-box">
+
+        <div>
+          <div class="section-label">Privacy by design</div>
+
+          <h2 class="section-title">
+            Your financial information should remain under your control.
+          </h2>
+
+          <p class="section-description">
+            Totalfolio is being designed around a local-first approach,
+            giving users control over how and where their financial
+            information is stored.
+          </p>
+        </div>
+
+
+        <div class="privacy-list">
+
+          <div class="privacy-item">
+            <span class="check">✓</span>
+            <span>
+              Local-first storage option for users who prefer to keep
+              information on their own device.
+            </span>
+          </div>
+
+          <div class="privacy-item">
+            <span class="check">✓</span>
+            <span>
+              Optional cloud synchronization for backup and multi-device
+              access.
+            </span>
+          </div>
+
+          <div class="privacy-item">
+            <span class="check">✓</span>
+            <span>
+              User-controlled AI processing rather than silently sending
+              financial information to external services.
+            </span>
+          </div>
+
+          <div class="privacy-item">
+            <span class="check">✓</span>
+            <span>
+              Granular sharing designed for individuals and trusted
+              family members.
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+
+  <section>
+    <div class="container">
+
+      <div class="section-label">Simple by design</div>
+
+      <h2 class="section-title">
+        Organize your finances without replacing your existing services.
+      </h2>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Add</h3>
+          <p>
+            Record your investments, insurance, loans, assets and other
+            financial items.
+          </p>
+        </div>
+
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Organize</h3>
+          <p>
+            Keep financial details, important dates and supporting
+            documents connected to the right records.
+          </p>
+        </div>
+
+
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Stay informed</h3>
+          <p>
+            Use reminders and intelligent assistance to stay aware of
+            renewals, maturities and financial obligations.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- AI -->
+
+  <section id="ai" class="ai">
+    <div class="container">
+
+      <div class="section-label">AI assistance</div>
+
+      <h2 class="section-title">
+        Making financial documents easier to organize.
+      </h2>
+
+      <p class="section-description">
+        We are exploring Claude-powered workflows to help users extract,
+        structure and understand information from their own financial
+        documents while keeping AI usage optional and transparent.
+      </p>
+
+
+      <div class="ai-card">
+
+        <div class="ai-example">
+          Example workflow
+        </div>
+
+        <div class="ai-response">
+          Upload an insurance policy or investment document →
+          identify important fields such as policy details, maturity or
+          renewal dates → review the extracted information →
+          save it to the appropriate Totalfolio record →
+          optionally create reminders.
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FAMILY -->
+
+  <section>
+    <div class="container">
+
+      <div class="section-label">For individuals & families</div>
+
+      <h2 class="section-title">
+        Important financial information should not disappear into a drawer.
+      </h2>
+
+      <p class="section-description">
+        Totalfolio is being designed to help families maintain visibility
+        into important policies, assets, liabilities, nominees, documents
+        and financial deadlines while preserving appropriate privacy.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          We're building Totalfolio.
+        </h2>
+
+        <p>
+          A simpler, privacy-first way to organize the financial
+          information that matters to individuals and families.
+        </p>
+
+        <a
+          href="mailto:founder@totalfolio.app"
+          class="btn btn-primary"
+        >
+          founder@totalfolio.app
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer>
+  <div class="container footer-inner">
+
+    <div>
+      © <span id="year"></span> Totalfolio
+    </div>
+
+    <div class="footer-links">
+      <a href="mailto:founder@totalfolio.app">Contact</a>
+
+      <a
+        href="https://github.com/Kashyap3774/totalfolio"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
 
 </body>
 </html>
